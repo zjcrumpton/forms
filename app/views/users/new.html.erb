@@ -1,0 +1,38 @@
+<%
+=begin%>
+ <form accept-charset="UTF-8" action = "/users" method = "post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <label for = "email">Email:</label>
+  <input type = "text" id = "email" name = "user[email]"><br>
+  <label for = "username">Username:</label>
+  <input type = "text" id = "username" name = "user[username]"><br>
+  <label for = "password">Password:</label>
+  <input type = "text" id = "password" name = "user[password]"><br>
+  <input type = "submit" value = "Submit">
+</form> 
+<%
+=end%>
+
+<%
+=begin%>
+ <%= form_tag("/users", method: "post") do %>
+<%= label_tag(:username, "Username: ") %>
+  <%= text_field_tag(:username) %><br>
+  <%= label_tag(:password, "Password: ") %>
+  <%= password_field_tag(:password) %><br>
+  <%= label_tag(:email, "Email: ") %>
+  <%= text_field_tag(:email) %><br>
+  <%= submit_tag("Submit", name: "submit")%>
+<% end %> 
+<%
+=end%>
+
+<%= form_for @user do |f| %>
+  <%= f.label :username, "Username: " %>
+  <%= f.text_field :username, placeholder: "John Doe" %><br>
+  <%= f.label :password, "Password: " %>
+  <%= f.password_field :password %><br>
+  <%= f.label :email, "Email: " %>
+  <%= f.text_field :email, placeholder: "shrek@swamp.com" %><br>
+  <%= f.submit "Submit" %>
+<% end %>
